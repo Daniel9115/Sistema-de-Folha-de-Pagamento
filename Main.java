@@ -28,6 +28,7 @@ public class Main {
             }
             switch (opcao) {
                 case 1:
+                    FuncionarioPadrao funcionarioPadrao = new FuncionarioPadrao();
                     break;
 
                 case 0:

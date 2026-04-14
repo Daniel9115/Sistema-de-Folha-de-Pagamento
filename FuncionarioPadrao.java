@@ -1,6 +1,8 @@
-public class s FuncionarioPadrao {
+public class FuncionarioPadrao {
     private String nome;
     private Integer matricula;
+
+    private double SalarioBase = 2000.0;
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -14,7 +16,11 @@ public class s FuncionarioPadrao {
         return nome;
     }
 
-    public Integer getMatricula() {
-        return matricula;
+    public Integer getMatricula() {return matricula;}
+
+    public double getSalarioBase() {return SalarioBase;}
+
+    public Double Calcular() {
+        return SalarioBase;
     }
 }

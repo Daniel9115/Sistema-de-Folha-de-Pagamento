@@ -16,11 +16,19 @@ public class FuncionarioPadrao {
         return nome;
     }
 
-    public Integer getMatricula() {return matricula;}
+    public Integer getMatricula() {
+        return matricula;
+    }
 
-    public double getSalarioBase() {return SalarioBase;}
-
-    public Double Calcular() {
+    public double getSalarioBase() {
         return SalarioBase;
+    }
+
+    public Double calcularSalarioFinal() {
+        return SalarioBase;
+    }
+
+    public String mostrarDados() {
+        return "Nome: " + nome + " | Matrícula: " + matricula + " | Salário Fixo: R$" + SalarioBase + " | Extras: 0.0 | Salário final: R$" + calcularSalarioFinal();
     }
 }

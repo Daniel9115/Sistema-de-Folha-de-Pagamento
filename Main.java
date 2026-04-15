@@ -8,17 +8,18 @@ public class Main {
     public static void main(String[] args) {
         boolean flag = true;
         ArrayList<FuncionarioPadrao> listaFuncionarioPadrao = new ArrayList<>();
-        while (flag) {
-            System.out.println("=========== Sistema de Folha de Pagamento ===========");
-            System.out.println("1 - Cadastrar Funcionário Padrão");
-            System.out.println("2 - Cadastrar Funcionário Comissionado");
-            System.out.println("3 - Cadastrar Funcionário Produção");
-            System.out.println("4 - Gerar Folha de Pagamento");
-            System.out.println("0 - Sair");
-            System.out.println("===========      Selecione uma opção      ===========:");
-            System.out.println("Opção: ");
+        Scanner leitor = new Scanner(System.in);
 
-            Scanner leitor = new Scanner(System.in);
+        while (flag) {
+            System.out.println("=========== Sistema de Folha de Pagamento ===========" +
+                    "\n1 - Cadastrar Funcionário Padrão" +
+                    "\n2 - Cadastrar Funcionário Comissionado" +
+                    "\n3 - Cadastrar Funcionário Produção" +
+                    "\n4 - Gerar Folha de Pagamento" +
+                    "\n0 - Sair" +
+                    "\n===========      Selecione uma opção      ===========" +
+                    "\nOpção: ");
+
             int opcao = 0;
 
             try {
@@ -34,27 +35,52 @@ public class Main {
                 continue;
             }
 
+            String nome;
+            Integer matricula;
+
             switch (opcao) {
                 case 1:
-                    System.out.print("Nome:");
-                    String nome = leitor.next();
+                    System.out.print("Nome: ");
+                    nome = leitor.nextLine();
 
-                    System.out.print("Matricula:");
-                    Integer matricula = leitor.nextInt();
+                    System.out.print("Matricula: ");
+                    matricula = leitor.nextInt();
 
                     FuncionarioPadrao funcionarioPadrao = new FuncionarioPadrao();
+
                     funcionarioPadrao.setNome(nome);
                     funcionarioPadrao.setMatricula(matricula);
 
                     listaFuncionarioPadrao.add(funcionarioPadrao);
 
+                    break;
 
-                    System.out.println(funcionarioPadrao.getSalarioBase());
+                case 2:
+                    System.out.print("Nome:");
+                    nome = leitor.nextLine();
+
+                    System.out.print("Matricula:");
+                    matricula = leitor.nextInt();
+
+                    System.out.print("Informe valor das vendas: ");
+                    Double totalValor = leitor.nextDouble();
+
+                    System.out.print("Informe comissão percentual: ");
+                    double percentual = leitor.nextDouble();
+
+                    FuncionarioComissionado funcionarioComissionado = new FuncionarioComissionado();
+                    funcionarioComissionado.setNome(nome);
+                    funcionarioComissionado.setMatricula(matricula);
+                    funcionarioComissionado.setPercentualComissao(percentual);
+                    funcionarioComissionado.setTotalVendas(totalValor);
+
+                    listaFuncionarioPadrao.add(funcionarioComissionado);
 
                     break;
                 case 4:
                     System.out.println("Total de pessoas cadastradas: " + listaFuncionarioPadrao.size());
-
+                    for (FuncionarioPadrao f : listaFuncionarioPadrao)
+                        System.out.println(f.mostrarDados());
                     break;
                 case 0:
                     flag = false;
@@ -65,4 +91,5 @@ public class Main {
             }
         }
     }
+
 }

@@ -1,7 +1,5 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.IOException;
 
 
 public class Main {
@@ -44,14 +42,14 @@ public class Main {
 
             String nome;
             Integer matricula;
-            ArrayList<String> DadosPadrao;
+            ArrayList<String> dadosPadrao;
 
             switch (opcao) {
                 case 1:
-                    DadosPadrao = DadosPadrao();
+                    dadosPadrao = dadosPadrao(leitor);
 
-                    nome = DadosPadrao.get(0);
-                    matricula = Integer.parseInt(DadosPadrao.get(1));
+                    nome = dadosPadrao.get(0);
+                    matricula = Integer.parseInt(dadosPadrao.get(1));
 
                     FuncionarioPadrao funcionarioPadrao = new FuncionarioPadrao(nome, matricula);
                     listaFuncionarioPadrao.add(funcionarioPadrao);
@@ -59,10 +57,10 @@ public class Main {
                     break;
 
                 case 2:
-                    DadosPadrao = DadosPadrao();
+                    dadosPadrao = dadosPadrao(leitor);
 
-                    nome = DadosPadrao.get(0);
-                    matricula = Integer.parseInt(DadosPadrao.get(1));
+                    nome = dadosPadrao.get(0);
+                    matricula = Integer.parseInt(dadosPadrao.get(1));
 
                     System.out.print("Informe valor das vendas: ");
                     Double totalValor = leitor.nextDouble();
@@ -72,13 +70,14 @@ public class Main {
 
                     FuncionarioComissionado funcionarioComissionado = new FuncionarioComissionado(nome, matricula, percentual, totalValor);
                     listaFuncionarioPadrao.add(funcionarioComissionado);
+                    funcionarioComissionado.getNome();
 
                     break;
                 case 3:
-                    DadosPadrao = DadosPadrao();
+                    dadosPadrao = dadosPadrao(leitor);
 
-                    nome = DadosPadrao.get(0);
-                    matricula = Integer.parseInt(DadosPadrao.get(1));
+                    nome = dadosPadrao.get(0);
+                    matricula = Integer.parseInt(dadosPadrao.get(1));
 
                     System.out.print("Informe qtde de peças: ");
                     Integer quantidadeProduzida = leitor.nextInt();
@@ -107,9 +106,8 @@ public class Main {
         }
     }
 
-    public static ArrayList DadosPadrao() {
+    public static ArrayList<String> dadosPadrao(Scanner leitor) {
         ArrayList<String> valores = new ArrayList<>();
-        Scanner leitor = new Scanner(System.in);
         String nome;
         Integer matricula;
         System.out.println("----------- CADASTRO DE FUNCIONÁRIO -----------");

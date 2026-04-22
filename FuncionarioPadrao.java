@@ -2,7 +2,7 @@ public class FuncionarioPadrao {
     private String nome;
     private Integer matricula;
 
-    private double SalarioBase = 2000.0;
+    private double SALARIO_BASE = 2000.0;
 
     public FuncionarioPadrao(String nome, int matricula) {
         this.nome = nome;
@@ -18,11 +18,11 @@ public class FuncionarioPadrao {
     }
 
     public double getSalarioBase() {
-        return SalarioBase;
+        return SALARIO_BASE;
     }
 
     public Double calcularSalarioFinal() {
-        return SalarioBase;
+        return SALARIO_BASE;
     }
 
     public String mostrarDados() {

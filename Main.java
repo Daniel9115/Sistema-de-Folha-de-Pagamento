@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Main {
 
     public static void main(String[] args) {
@@ -9,26 +8,56 @@ public class Main {
         ArrayList<FuncionarioPadrao> listaFuncionarioPadrao = new ArrayList<>();
         Scanner leitor = new Scanner(System.in);
 
-        listaFuncionarioPadrao.add(new FuncionarioPadrao("João Silva", 101));
-        listaFuncionarioPadrao.add(new FuncionarioPadrao("Maria Souza", 102));
+        FuncionarioPadrao fp1 = new FuncionarioPadrao();
+        fp1.setNome("João Silva");
+        fp1.setMatricula(101);
+        listaFuncionarioPadrao.add(fp1);
 
-        listaFuncionarioPadrao.add(new FuncionarioComissionado("Carlos Oliveira", 201, 10, 5000));
-        listaFuncionarioPadrao.add(new FuncionarioComissionado("Ana Pereira", 202, 5, 12000));
+        FuncionarioPadrao fp2 = new FuncionarioPadrao();
+        fp2.setNome("Maria Souza");
+        fp2.setMatricula(102);
+        listaFuncionarioPadrao.add(fp2);
 
-        listaFuncionarioPadrao.add(new FuncionarioProducao("Pedro Santos", 301, 5, 100));
-        listaFuncionarioPadrao.add(new FuncionarioProducao("Lucas Ferreira", 302, 3, 200));
+        FuncionarioComissionado fc1 = new FuncionarioComissionado();
+        fc1.setNome("Carlos Oliveira");
+        fc1.setMatricula(201);
+        fc1.setPercentualComissao(10);
+        fc1.setTotalVendas(5000);
+        listaFuncionarioPadrao.add(fc1);
+
+        FuncionarioComissionado fc2 = new FuncionarioComissionado();
+        fc2.setNome("Ana Pereira");
+        fc2.setMatricula(202);
+        fc2.setPercentualComissao(5);
+        fc2.setTotalVendas(12000);
+        listaFuncionarioPadrao.add(fc2);
+
+        FuncionarioProducao fp3 = new FuncionarioProducao();
+        fp3.setNome("Pedro Santos");
+        fp3.setMatricula(301);
+        fp3.setValorPorPeca(5);
+        fp3.setQuantidadeProduzida(100);
+        listaFuncionarioPadrao.add(fp3);
+
+        FuncionarioProducao fp4 = new FuncionarioProducao();
+        fp4.setNome("Lucas Ferreira");
+        fp4.setMatricula(302);
+        fp4.setValorPorPeca(3);
+        fp4.setQuantidadeProduzida(200);
+        listaFuncionarioPadrao.add(fp4);
 
         while (flag) {
+            ConsoleUtils.limparTela();
             System.out.println(
-                    "=====================================================\n" +
-                    "            SISTEMA DE FOLHA DE PAGAMENTO\n" +
-                    "=====================================================" +
-                    "\n1 - Cadastrar Funcionário Padrão" +
-                    "\n2 - Cadastrar Funcionário Comissionado" +
-                    "\n3 - Cadastrar Funcionário Produção" +
-                    "\n4 - Gerar Folha de Pagamento" +
-                    "\n0 - Sair" +
-                    "\n===========      Selecione uma opção      ===========");
+                    "=".repeat(53) +
+                            "\n            SISTEMA DE FOLHA DE PAGAMENTO\n" +
+                            "=".repeat(53) +
+                            "\n1 - Cadastrar Funcionário Padrão" +
+                            "\n2 - Cadastrar Funcionário Comissionado" +
+                            "\n3 - Cadastrar Funcionário Produção" +
+                            "\n4 - Gerar Folha de Pagamento" +
+                            "\n0 - Sair" +
+                            "\n===========      Selecione uma opção      ===========");
             System.out.print("Opção: ");
             int opcao = 0;
 
@@ -37,12 +66,15 @@ public class Main {
                 leitor.nextLine();
             } catch (Exception e) {
                 System.out.println("Digite apenas números válidos!");
+                leitor.nextLine();
                 continue;
             }
 
             String nome;
             Integer matricula;
             ArrayList<String> dadosPadrao;
+
+            ConsoleUtils.limparTela();
 
             switch (opcao) {
                 case 1:
@@ -51,7 +83,10 @@ public class Main {
                     nome = dadosPadrao.get(0);
                     matricula = Integer.parseInt(dadosPadrao.get(1));
 
-                    FuncionarioPadrao funcionarioPadrao = new FuncionarioPadrao(nome, matricula);
+                    FuncionarioPadrao funcionarioPadrao = new FuncionarioPadrao();
+                    funcionarioPadrao.setNome(nome);
+                    funcionarioPadrao.setMatricula(matricula);
+
                     listaFuncionarioPadrao.add(funcionarioPadrao);
 
                     break;
@@ -68,9 +103,13 @@ public class Main {
                     System.out.print("Informe comissão percentual: ");
                     double percentual = leitor.nextDouble();
 
-                    FuncionarioComissionado funcionarioComissionado = new FuncionarioComissionado(nome, matricula, percentual, totalValor);
+                    FuncionarioComissionado funcionarioComissionado = new FuncionarioComissionado();
+                    funcionarioComissionado.setNome(nome);
+                    funcionarioComissionado.setMatricula(matricula);
+                    funcionarioComissionado.setTotalVendas(totalValor);
+                    funcionarioComissionado.setPercentualComissao(percentual);
+
                     listaFuncionarioPadrao.add(funcionarioComissionado);
-                    funcionarioComissionado.getNome();
 
                     break;
                 case 3:
@@ -85,12 +124,20 @@ public class Main {
                     System.out.print("Informe valor da peça: ");
                     double valorPorPeca = leitor.nextDouble();
 
-                    FuncionarioProducao funcionarioProducao = new FuncionarioProducao(nome, matricula, valorPorPeca, quantidadeProduzida);
+                    FuncionarioProducao funcionarioProducao = new FuncionarioProducao();
+                    funcionarioProducao.setNome(nome);
+                    funcionarioProducao.setMatricula(matricula);
+                    funcionarioProducao.setQuantidadeProduzida(quantidadeProduzida);
+                    funcionarioProducao.setValorPorPeca(valorPorPeca);
+
                     listaFuncionarioPadrao.add(funcionarioProducao);
 
                     break;
                 case 4:
-                    System.out.println("Total de pessoas cadastradas: " + listaFuncionarioPadrao.size());
+                    ConsoleUtils.limparTela();
+                    System.out.println("=".repeat(53) +
+                            "\nTotal de pessoas cadastradas: " + listaFuncionarioPadrao.size() +
+                            "\n" + "=".repeat(53));
 
                     for (FuncionarioPadrao f : listaFuncionarioPadrao)
                         System.out.println(f.mostrarDados());

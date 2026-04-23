@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="Sistema-de-Folha-de-Pagamento:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Sistema_de_Folha_de_Pagamento_jar</output-path>
-    <root id="archive" name="Sistema-de-Folha-de-Pagamento.jar">
-      <element id="module-output" name="Sistema-de-Folha-de-Pagamento" />
-    </root>
-  </artifact>
-</component>

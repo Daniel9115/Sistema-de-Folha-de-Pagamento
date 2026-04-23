@@ -4,8 +4,11 @@ public class FuncionarioPadrao {
 
     private double SALARIO_BASE = 2000.0;
 
-    public FuncionarioPadrao(String nome, int matricula) {
+    public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public void setMatricula(Integer matricula) {
         this.matricula = matricula;
     }
 

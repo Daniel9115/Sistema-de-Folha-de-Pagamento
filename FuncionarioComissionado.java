@@ -2,10 +2,12 @@ public class FuncionarioComissionado extends FuncionarioPadrao {
     private double totalVendas;
     private double percentualComissao;
 
-    public FuncionarioComissionado(String nome, int matricula, double percentual, double totalVendas) {
-        super(nome, matricula);
-        this.percentualComissao = percentual;
+    public void setTotalVendas(double totalVendas) {
         this.totalVendas = totalVendas;
+    }
+
+    public void setPercentualComissao(double percentualComissao) {
+        this.percentualComissao = percentualComissao;
     }
 
     public Double comissao() {

@@ -6,10 +6,8 @@ public class FuncionarioProducao extends FuncionarioPadrao {
         return valorPorPeca;
     }
 
-    public FuncionarioProducao(String nome, int matricula, double valorPorPeca, Integer quantidadeProduzida) {
-        super(nome, matricula);
+    public void setValorPorPeca(double valorPorPeca) {
         this.valorPorPeca = valorPorPeca;
-        this.quantidadeProduzida = quantidadeProduzida;
     }
 
     public Integer getQuantidadeProduzida() {

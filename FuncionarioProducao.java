@@ -2,20 +2,18 @@ public class FuncionarioProducao extends FuncionarioPadrao {
     private double valorPorPeca;
     private Integer quantidadeProduzida;
 
+public FuncionarioProducao(String nome, int matricula, double valorPorPeca, Integer quantidadeProduzida) {
+        super(nome, matricula);
+        this.valorPorPeca = valorPorPeca;
+        this.quantidadeProduzida = quantidadeProduzida;
+    }
+
     public double getValorPorPeca() {
         return valorPorPeca;
     }
 
-    public void setValorPorPeca(double valorPorPeca) {
-        this.valorPorPeca = valorPorPeca;
-    }
-
     public Integer getQuantidadeProduzida() {
         return quantidadeProduzida;
-    }
-
-    public void setQuantidadeProduzida(Integer quantidadeProduzida) {
-        this.quantidadeProduzida = quantidadeProduzida;
     }
 
     public double bonus() {

@@ -2,7 +2,7 @@ public class FuncionarioProducao extends FuncionarioPadrao {
     private double valorPorPeca;
     private Integer quantidadeProduzida;
 
-public FuncionarioProducao(String nome, int matricula, double valorPorPeca, Integer quantidadeProduzida) {
+    public FuncionarioProducao(String nome, int matricula, double valorPorPeca, Integer quantidadeProduzida) {
         super(nome, matricula);
         this.valorPorPeca = valorPorPeca;
         this.quantidadeProduzida = quantidadeProduzida;

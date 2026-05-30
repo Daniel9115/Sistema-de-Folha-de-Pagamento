@@ -1,5 +1,3 @@
-import com.sun.nio.sctp.MessageInfo;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -46,8 +44,7 @@ public class Main {
 
                     FuncionarioPadrao funcionarioPadrao = new FuncionarioPadrao(nome, matricula);
 
-                    System.out.println("Sucesso: " + nome + " Mattricula: " + matricula);
-                    leitor.nextInt();
+                    System.out.println("Sucesso: " + nome + " Matricula: " + matricula);
 
                     listaFuncionarioPadrao.add(funcionarioPadrao);
 
@@ -59,14 +56,11 @@ public class Main {
                     nome = dadosPadrao.get(0);
                     matricula = Integer.parseInt(dadosPadrao.get(1));
 
-                    System.out.print("Informe valor das vendas: ");
-                    Double totalValor = leitor.nextDouble();
+                    double totalValor = lerDoublePositivo(leitor, "Informe valor das vendas: ");
+                    double percentual = lerDoublePositivo(leitor, "Informe comissão percentual: ");
+                    FuncionarioComissionado funcionarioComissionado = new FuncionarioComissionado(nome, matricula,
+                            totalValor, percentual);
 
-                    System.out.print("Informe comissão percentual: ");
-                    double percentual = leitor.nextDouble();
-
-                    FuncionarioComissionado funcionarioComissionado = new FuncionarioComissionado(nome, matricula, totalValor, percentual);
-                    
                     listaFuncionarioPadrao.add(funcionarioComissionado);
 
                     break;
@@ -76,13 +70,11 @@ public class Main {
                     nome = dadosPadrao.get(0);
                     matricula = Integer.parseInt(dadosPadrao.get(1));
 
-                    System.out.print("Informe qtde de peças: ");
-                    Integer quantidadeProduzida = leitor.nextInt();
+                    int quantidadeProduzida = lerIntPositivo(leitor, "Informe qtde de peças: ");
+                    double valorPorPeca = lerDoublePositivo(leitor, "Informe valor da peça: ");
 
-                    System.out.print("Informe valor da peça: ");
-                    double valorPorPeca = leitor.nextDouble();
-
-                    FuncionarioProducao funcionarioProducao = new FuncionarioProducao(nome, matricula, valorPorPeca, quantidadeProduzida);
+                    FuncionarioProducao funcionarioProducao = new FuncionarioProducao(nome, matricula, valorPorPeca,
+                            quantidadeProduzida);
 
                     listaFuncionarioPadrao.add(funcionarioProducao);
 
@@ -113,16 +105,54 @@ public class Main {
         Integer matricula;
 
         System.out.println("----------- CADASTRO DE FUNCIONÁRIO -----------");
-        System.out.print("Nome:");
-        nome = leitor.nextLine();
 
-        System.out.print("Matricula:");
-        matricula = leitor.nextInt();
+        do {
+            System.out.print("Nome: ");
+            nome = leitor.nextLine().trim();
+            if (nome.isEmpty())
+                System.out.println("Nome não pode ser vazio!");
+        } while (nome.isEmpty());
+
+        matricula = lerIntPositivo(leitor, "Matricula: ");
 
         valores.add(nome);
-        valores.add(matricula.toString());
+        valores.add(String.valueOf(matricula));
 
         return valores;
+    }
+
+    public static double lerDoublePositivo(Scanner leitor, String mensagem) {
+        double valor;
+        do {
+            System.out.print(mensagem);
+            while (!leitor.hasNextDouble()) {
+                System.out.println("Digite apenas números válidos!");
+                leitor.nextLine();
+                System.out.print(mensagem);
+            }
+            valor = leitor.nextDouble();
+            if (valor < 0)
+                System.out.println("O valor não pode ser negativo!");
+        } while (valor < 0);
+        leitor.nextLine();
+        return valor;
+    }
+
+    public static int lerIntPositivo(Scanner leitor, String mensagem) {
+        int valor;
+        do {
+            System.out.print(mensagem);
+            while (!leitor.hasNextInt()) {
+                System.out.println("Digite apenas números válidos!");
+                leitor.nextLine();
+                System.out.print(mensagem);
+            }
+            valor = leitor.nextInt();
+            if (valor < 0)
+                System.out.println("O valor não pode ser negativo!");
+        } while (valor < 0);
+        leitor.nextLine();
+        return valor;
     }
 
 }
